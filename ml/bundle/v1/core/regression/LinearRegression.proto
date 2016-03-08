@@ -1,0 +1,10 @@
+package ml.bundle.v1.core.regression;
+
+option java_outer_classname = "LinearRegressionProto";
+
+import "ml/bundle/v1/core/linalg/Vector.proto";
+
+message LinearRegression {
+    required ml.bundle.v1.core.linalg.Vector coefficients = 1;
+    required double intercept = 2;
+}

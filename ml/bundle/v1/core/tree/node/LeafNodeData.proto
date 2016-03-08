@@ -1,0 +1,8 @@
+package ml.bundle.v1.core.tree.node;
+
+option java_outer_classname = "LeafNodeDataProto";
+
+message LeafNodeData {
+    required double prediction = 1;
+    required double impurity = 2;
+}

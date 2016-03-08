@@ -1,0 +1,9 @@
+package ml.bundle.v1.core.linalg;
+
+option java_outer_classname = "SparseVectorProto";
+
+message SparseVector {
+    required int32 size = 1;
+    repeated int32 indices = 2;
+    repeated double values = 3;
+}

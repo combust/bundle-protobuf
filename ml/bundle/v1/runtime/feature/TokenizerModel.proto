@@ -1,0 +1,11 @@
+package ml.bundle.v1.runtime.feature;
+
+option java_outer_classname = "TokenizerProto";
+
+import "ml/bundle/v1/core/feature/Tokenizer.proto";
+
+message TokenizerModel {
+    required string inputCol = 1;
+    required string outputCol = 2;
+    required ml.bundle.v1.core.feature.Tokenizer model = 3;
+}
