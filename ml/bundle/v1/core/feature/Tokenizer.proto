@@ -1,7 +1,0 @@
-package ml.bundle.v1.core.feature;
-
-option java_outer_classname = "TokenizerProto";
-
-message Tokenizer {
-    required string regex = 1;
-}

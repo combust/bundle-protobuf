@@ -3,6 +3,6 @@ package ml.bundle.v1.core.regression.random_forest;
 option java_outer_classname = "MetaDataProto";
 
 message MetaData {
-    required int32 size = 1;
-    repeated double treeWeights = 2;
+  required int32 numTrees = 1;
+  required int32 numFeatures = 2;
 }

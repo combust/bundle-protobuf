@@ -1,0 +1,7 @@
+package ml.bundle.v1.core.regression.decision_tree;
+
+option java_outer_classname = "MetaDataProto";
+
+message MetaData {
+    required int32 numFeatures = 1;
+}
