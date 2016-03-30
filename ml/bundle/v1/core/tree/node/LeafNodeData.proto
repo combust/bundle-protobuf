@@ -2,7 +2,10 @@ package ml.bundle.v1.core.tree.node;
 
 option java_outer_classname = "LeafNodeDataProto";
 
+import "ml/bundle/v1/core/linalg/Vector.proto";
+
 message LeafNodeData {
     required double prediction = 1;
     required double impurity = 2;
+    optional ml.bundle.v1.core.linalg.Vector impurityStats = 3;
 }
