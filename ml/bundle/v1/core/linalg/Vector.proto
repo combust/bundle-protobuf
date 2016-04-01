@@ -6,6 +6,8 @@ import "ml/bundle/v1/core/linalg/DenseVector.proto";
 import "ml/bundle/v1/core/linalg/SparseVector.proto";
 
 message Vector {
-    optional DenseVector dense = 1;
-    optional SparseVector sparse = 2;
+  oneof data {
+    DenseVector dense = 1;
+    SparseVector sparse = 2;
+  }
 }
