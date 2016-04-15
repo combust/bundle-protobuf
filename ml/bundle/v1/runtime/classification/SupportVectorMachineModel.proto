@@ -1,0 +1,11 @@
+package ml.bundle.v1.runtime.classification;
+
+option java_outer_classname = "SupportVectorMachineModelProto";
+
+import "ml/bundle/v1/core/classification/SupportVectorMachine.proto";
+
+message SupportVectorMachineModel {
+    required string featuresCol = 1;
+    required string predictionCol = 2;
+    required ml.bundle.v1.core.classification.SupportVectorMachine model = 3;
+}

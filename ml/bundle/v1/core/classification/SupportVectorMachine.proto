@@ -1,0 +1,10 @@
+package ml.bundle.v1.core.classification;
+
+option java_outer_classname = "SupportVectorMachineProto";
+
+import "ml/bundle/v1/core/linalg/Vector.proto";
+
+message SupportVectorMachine {
+  required ml.bundle.v1.core.linalg.Vector coefficients = 1;
+  required double intercept = 2;
+}
