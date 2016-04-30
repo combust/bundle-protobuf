@@ -1,0 +1,11 @@
+package ml.bundle.v1.core.classification;
+
+option java_outer_classname = "LogisticRegressionProto";
+
+import "ml/bundle/v1/core/linalg/Vector.proto";
+
+message LogisticRegression {
+  required ml.bundle.v1.core.linalg.Vector coefficients = 1;
+  required double intercept = 2;
+  required double threshold = 3;
+}
