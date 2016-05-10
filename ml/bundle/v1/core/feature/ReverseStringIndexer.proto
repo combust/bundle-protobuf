@@ -3,5 +3,5 @@ package ml.bundle.v1.core.feature;
 option java_outer_classname = "ReverseStringIndexerProto";
 
 message ReverseStringIndexer {
-    repeated string strings = 1;
+  repeated string strings = 1;
 }

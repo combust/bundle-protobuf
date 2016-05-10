@@ -3,6 +3,6 @@ package ml.bundle.v1.core.classification.decision_tree;
 option java_outer_classname = "MetaDataProto";
 
 message MetaData {
-  required int32 numFeatures = 1;
-  required int32 numClasses = 2;
+  required uint32 numFeatures = 1;
+  required uint32 numClasses = 2;
 }

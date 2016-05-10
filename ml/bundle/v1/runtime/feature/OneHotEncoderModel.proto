@@ -1,0 +1,11 @@
+package ml.bundle.v1.runtime.feature;
+
+option java_outer_classname = "OneHotEncoderModelProto";
+
+import "ml/bundle/v1/core/feature/OneHotEncoder.proto";
+
+message OneHotEncoderModel {
+  required string inputCol = 1;
+  required string outputCol = 2;
+  required ml.bundle.v1.core.feature.OneHotEncoder model = 3;
+}

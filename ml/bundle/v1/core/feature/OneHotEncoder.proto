@@ -1,0 +1,7 @@
+package ml.bundle.v1.core.feature;
+
+option java_outer_classname = "OneHotEncoderProto";
+
+message OneHotEncoder {
+  required uint32 size = 1;
+}
