@@ -3,8 +3,8 @@ package ml.bundle.v1.core.tree;
 option java_outer_classname = "CategoricalSplitProto";
 
 message CategoricalSplit {
-    required uint32 featureIndex = 1;
-    required uint32 numCategories = 2;
-    repeated double categories = 3;
-    required bool isLeft = 4;
+  required uint32 featureIndex = 1;
+  required uint32 numCategories = 2;
+  repeated double categories = 3;
+  required bool isLeft = 4;
 }

@@ -1,4 +1,4 @@
-package ml.bundle.v1.runtime.regression.random_forest;
+package ml.bundle.v1.runtime.regression.decision_tree_regression;
 
 option java_outer_classname = "MetaDataProto";
 
