@@ -3,6 +3,7 @@ package ml.bundle.v1.runtime.feature;
 option java_outer_classname = "TokenizerModelProto";
 
 message TokenizerModel {
-  required string inputCol = 1;
-  required string outputCol = 2;
+  required string uid = 1;
+  required string inputCol = 2;
+  required string outputCol = 3;
 }

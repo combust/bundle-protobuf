@@ -5,7 +5,8 @@ option java_outer_classname = "LogisticRegressionModelProto";
 import "ml/bundle/v1/core/classification/LogisticRegression.proto";
 
 message LogisticRegressionModel {
-  required string featuresCol = 1;
-  required string predictionCol = 2;
-  required ml.bundle.v1.core.classification.LogisticRegression model = 3;
+  required string uid = 1;
+  required string featuresCol = 2;
+  required string predictionCol = 3;
+  required ml.bundle.v1.core.classification.LogisticRegression model = 4;
 }

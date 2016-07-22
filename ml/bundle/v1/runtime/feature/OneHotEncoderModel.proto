@@ -5,7 +5,8 @@ option java_outer_classname = "OneHotEncoderModelProto";
 import "ml/bundle/v1/core/feature/OneHotEncoder.proto";
 
 message OneHotEncoderModel {
-  required string inputCol = 1;
-  required string outputCol = 2;
-  required ml.bundle.v1.core.feature.OneHotEncoder model = 3;
+  required string uid = 1;
+  required string inputCol = 2;
+  required string outputCol = 3;
+  required ml.bundle.v1.core.feature.OneHotEncoder model = 4;
 }

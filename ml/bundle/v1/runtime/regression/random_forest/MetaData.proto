@@ -3,6 +3,7 @@ package ml.bundle.v1.runtime.regression.random_forest;
 option java_outer_classname = "MetaDataProto";
 
 message MetaData {
-  required string featuresCol = 1;
-  required string predictionCol = 2;
+  required string uid = 1;
+  required string featuresCol = 2;
+  required string predictionCol = 3;
 }
