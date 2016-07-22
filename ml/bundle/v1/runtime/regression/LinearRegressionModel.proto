@@ -1,6 +1,6 @@
 package ml.bundle.v1.runtime.regression;
 
-option java_outer_classname = "LinearRegressionProto";
+option java_outer_classname = "LinearRegressionModelProto";
 
 import "ml/bundle/v1/core/regression/LinearRegression.proto";
 
