@@ -3,5 +3,5 @@ package ml.bundle.v1.core.linalg;
 option java_outer_classname = "DenseVectorProto";
 
 message DenseVector {
-    repeated double values = 1;
+  repeated double values = 1;
 }

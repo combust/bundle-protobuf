@@ -5,7 +5,7 @@ option java_outer_classname = "HashingTermFrequencyModelProto";
 import "ml/bundle/v1/core/feature/HashingTermFrequency.proto";
 
 message HashingTermFrequencyModel {
-    required string inputCol = 1;
-    required string outputCol = 2;
-    required ml.bundle.v1.core.feature.HashingTermFrequency model = 3;
+  required string inputCol = 1;
+  required string outputCol = 2;
+  required ml.bundle.v1.core.feature.HashingTermFrequency model = 3;
 }

@@ -5,7 +5,7 @@ option java_outer_classname = "LinearRegressionProto";
 import "ml/bundle/v1/core/regression/LinearRegression.proto";
 
 message LinearRegressionModel {
-    required string featuresCol = 1;
-    required string predictionCol = 2;
-    required ml.bundle.v1.core.regression.LinearRegression model = 3;
+  required string featuresCol = 1;
+  required string predictionCol = 2;
+  required ml.bundle.v1.core.regression.LinearRegression model = 3;
 }

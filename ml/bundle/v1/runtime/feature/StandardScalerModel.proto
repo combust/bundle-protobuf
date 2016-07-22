@@ -5,7 +5,7 @@ option java_outer_classname = "StandardScalerModelProto";
 import "ml/bundle/v1/core/feature/StandardScaler.proto";
 
 message StandardScalerModel {
-    required string inputCol = 1;
-    required string outputCol = 2;
-    required ml.bundle.v1.core.feature.StandardScaler model = 3;
+  required string inputCol = 1;
+  required string outputCol = 2;
+  required ml.bundle.v1.core.feature.StandardScaler model = 3;
 }

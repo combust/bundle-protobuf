@@ -5,7 +5,7 @@ option java_outer_classname = "ReverseStringIndexerModelProto";
 import "ml/bundle/v1/core/feature/ReverseStringIndexer.proto";
 
 message ReverseStringIndexerModel {
-    required string inputCol = 1;
-    required string outputCol = 2;
-    required ml.bundle.v1.core.feature.ReverseStringIndexer model = 3;
+  required string inputCol = 1;
+  required string outputCol = 2;
+  required ml.bundle.v1.core.feature.ReverseStringIndexer model = 3;
 }

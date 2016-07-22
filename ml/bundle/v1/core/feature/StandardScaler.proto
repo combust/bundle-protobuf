@@ -5,6 +5,6 @@ option java_outer_classname = "StandardScalerProto";
 import "ml/bundle/v1/core/linalg/Vector.proto";
 
 message StandardScaler {
-    optional ml.bundle.v1.core.linalg.Vector std = 1;
-    optional ml.bundle.v1.core.linalg.Vector mean = 2;
+  optional ml.bundle.v1.core.linalg.Vector std = 1;
+  optional ml.bundle.v1.core.linalg.Vector mean = 2;
 }
