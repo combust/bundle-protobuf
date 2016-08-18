@@ -1,0 +1,9 @@
+package ml.bundle.model;
+
+option java_outer_classname = "BasicTypeProto";
+
+enum BasicType {
+  UNKNOWN = 0;
+  DOUBLE = 1;
+  STRING = 2;
+}

@@ -1,0 +1,10 @@
+package ml.bundle.model;
+
+option java_outer_classname = "TensorTypeProto";
+
+import "ml/bundle/model/BasicType.proto";
+
+message TensorType {
+  required ml.bundle.model.BasicType base = 1;
+  required uint32 dimensions = 2;
+}

@@ -1,0 +1,11 @@
+package ml.bundle.model;
+
+option java_outer_classname = "SocketProto";
+
+import "ml/bundle/model/DataType.proto";
+
+message Socket {
+  required string name = 1;
+  required string port = 2;
+  required ml.bundle.model.DataType dataType = 3;
+}

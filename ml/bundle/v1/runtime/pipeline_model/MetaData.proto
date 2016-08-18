@@ -1,9 +1,0 @@
-package ml.bundle.v1.runtime.pipeline_model;
-
-option java_outer_classname = "MetaDataProto";
-
-message MetaData {
-  required string uid = 1;
-  repeated string transformers = 2;
-}
-

@@ -1,9 +1,0 @@
-package ml.bundle.v1.runtime.feature;
-
-option java_outer_classname = "VectorAssemblerModelProto";
-
-message VectorAssemblerModel {
-  required string uid = 1;
-  repeated string inputCols = 2;
-  required string outputCol = 3;
-}

@@ -1,9 +1,0 @@
-package ml.bundle.v1.runtime.regression.decision_tree_regression;
-
-option java_outer_classname = "MetaDataProto";
-
-message MetaData {
-  required string uid = 1;
-  required string featuresCol = 2;
-  required string predictionCol = 3;
-}
