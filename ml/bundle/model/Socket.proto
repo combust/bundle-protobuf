@@ -5,7 +5,7 @@ option java_outer_classname = "SocketProto";
 import "ml/bundle/model/DataType.proto";
 
 message Socket {
-  required string name = 1;
-  required string port = 2;
-  required ml.bundle.model.DataType dataType = 3;
+  required string name = 1; // make
+  required string port = 2; // inputCol
+  required ml.bundle.model.DataType dataType = 3; // string
 }

@@ -1,8 +1,0 @@
-package ml.bundle.v1.core.regression.random_forest;
-
-option java_outer_classname = "MetaDataProto";
-
-message MetaData {
-  required uint32 numTrees = 1;
-  required uint32 numFeatures = 2;
-}
