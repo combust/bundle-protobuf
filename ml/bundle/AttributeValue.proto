@@ -8,12 +8,12 @@ import "ml/bundle/Tensor.proto";
 // Taken from TensorFlow
 message AttributeValue {
   message ListValue {
-    repeated string s = 2;
-    repeated int64 i = 3 [packed = true];
-    repeated double f = 4 [packed = true];
-    repeated bool b = 5 [packed = true];
-    repeated DataType type = 6;
-    repeated Tensor tensor = 7;
+    repeated string s = 101;
+    repeated int64 i = 103 [packed = true];
+    repeated double f = 104 [packed = true];
+    repeated bool b = 105 [packed = true];
+    repeated DataType type = 106;
+    repeated Tensor tensor = 107;
   }
 
   oneof value {
@@ -23,6 +23,7 @@ message AttributeValue {
     bool b = 5;
     DataType type = 6;
     Tensor tensor = 7;
+
     ListValue list = 1;
   }
 }

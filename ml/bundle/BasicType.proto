@@ -5,6 +5,9 @@ option java_outer_classname = "BasicTypeProto";
 enum BasicType {
   UNKNOWN = 0;
   CUSTOM = 1;
-  DOUBLE = 2;
-  STRING = 3;
+  STRING = 2;
+  LONG = 3;
+  DOUBLE = 4;
+  BOOLEAN = 5;
+  DATA_TYPE = 6;
 }

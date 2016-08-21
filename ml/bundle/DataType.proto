@@ -6,8 +6,13 @@ import "ml/bundle/BasicType.proto";
 import "ml/bundle/TensorType.proto";
 
 message DataType {
+  message ListType {
+    required BasicType base = 1;
+  }
+
   oneof underlying {
     BasicType basic = 1;
-    TensorType tensor = 2;
+    ListType list = 2;
+    TensorType tensor = 3;
   }
 }
