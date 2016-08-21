@@ -1,0 +1,10 @@
+package ml.bundle;
+
+option java_outer_classname = "ShapeProto";
+
+import "ml/bundle/Socket.proto";
+
+message Shape {
+  repeated Socket inputs = 1;
+  repeated Socket outputs = 2;
+}

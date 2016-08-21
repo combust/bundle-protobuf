@@ -1,0 +1,13 @@
+package ml.bundle;
+
+option java_outer_classname = "DataTypeProto";
+
+import "ml/bundle/BasicType.proto";
+import "ml/bundle/TensorType.proto";
+
+message DataType {
+  oneof underlying {
+    BasicType basic = 1;
+    TensorType tensor = 2;
+  }
+}

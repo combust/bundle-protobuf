@@ -1,0 +1,13 @@
+package ml.bundle;
+
+option java_outer_classname = "AttributeProto";
+
+import "ml/bundle/AttributeValue.proto";
+
+message Attribute {
+  required string name = 1;
+  oneof value {
+    AttributeValue local = 2;
+    string custom = 3;
+  }
+}
