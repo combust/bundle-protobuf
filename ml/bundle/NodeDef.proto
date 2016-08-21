@@ -10,5 +10,4 @@ message NodeDef {
   required string name = 2;
   repeated Attribute attributes = 3;
   required Shape shape = 4;
-  repeated string children = 5;
 }

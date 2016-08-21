@@ -8,4 +8,5 @@ message BundleDef {
   required string name = 1;
   required string version = 2;
   repeated Attribute attributes = 3;
+  repeated string nodes = 4;
 }
