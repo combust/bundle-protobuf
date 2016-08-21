@@ -1,0 +1,9 @@
+package ml.bundle;
+
+option java_outer_classname = "AttributeListProto";
+
+import "ml/bundle/Attribute.proto";
+
+message AttributeList {
+  repeated Attribute attributes = 1;
+}
