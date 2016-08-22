@@ -3,11 +3,8 @@ package ml.bundle;
 option java_outer_classname = "NodeDefProto";
 
 import "ml/bundle/Shape.proto";
-import "ml/bundle/Attribute.proto";
 
 message NodeDef {
-  required string op = 1;
-  required string name = 2;
-  repeated Attribute attributes = 3;
-  required Shape shape = 4;
+  required string name = 1;
+  required Shape shape = 2;
 }
