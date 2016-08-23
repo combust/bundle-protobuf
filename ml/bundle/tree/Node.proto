@@ -1,0 +1,22 @@
+package ml.bundle.tree;
+
+option java_outer_classname = "NodeProto";
+
+import "ml/bundle/tree/Split.proto";
+
+message Node {
+  message InternalNode {
+    required Split split = 1;
+  }
+
+  message LeafNode {
+    required double prediction = 1;
+    repeated double impurities = 2;
+  }
+
+  oneof n {
+    InternalNode internal = 1;
+    LeafNode leaf = 2;
+  }
+}
+

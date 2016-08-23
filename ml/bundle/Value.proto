@@ -1,12 +1,12 @@
 package ml.bundle;
 
-option java_outer_classname = "AttributeValueProto";
+option java_outer_classname = "ValueProto";
 
 import "ml/bundle/DataType.proto";
 import "ml/bundle/Tensor.proto";
 
 // Taken from TensorFlow
-message AttributeValue {
+message Value {
   message ListValue {
     repeated string s = 101;
     repeated int64 i = 103 [packed = true];
@@ -16,7 +16,7 @@ message AttributeValue {
     repeated Tensor tensor = 107;
   }
 
-  oneof value {
+  oneof v {
     string s = 2;
     int64 i = 3;
     double f = 4;
