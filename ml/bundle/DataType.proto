@@ -7,12 +7,13 @@ import "ml/bundle/TensorType.proto";
 
 message DataType {
   message ListType {
-    required BasicType base = 1;
+    required DataType base = 1;
   }
 
   oneof underlying {
     BasicType basic = 1;
     ListType list = 2;
     TensorType tensor = 3;
+    string custom = 4;
   }
 }
