@@ -7,6 +7,16 @@ import "ml/bundle/Tensor.proto";
 
 // Taken from TensorFlow
 message Value {
+  message CustomValue {
+    required string name = 1;
+    required bytes b = 2;
+  }
+
+  message CustomList {
+    required string name = 1;
+    repeated bytes b = 2;
+  }
+
   message ListValue {
     repeated ListValue list = 1;
     repeated string s = 2;
@@ -15,7 +25,7 @@ message Value {
     repeated bool b = 5 [packed = true];
     repeated DataType type = 6;
     repeated Tensor tensor = 7;
-    repeated bytes custom = 8;
+    optional CustomList custom = 8;
   }
 
   oneof v {
@@ -26,6 +36,6 @@ message Value {
     bool b = 5;
     DataType type = 6;
     Tensor tensor = 7;
-    bytes custom = 8;
+    CustomValue custom = 8;
   }
 }
