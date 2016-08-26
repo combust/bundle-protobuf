@@ -3,8 +3,10 @@ package ml.bundle;
 option java_outer_classname = "AttributeProto";
 
 import "ml/bundle/Value.proto";
+import "ml/bundle/DataType.proto";
 
 message Attribute {
   required string name = 1;
-  required Value value = 2;
+  required DataType type = 2;
+  required Value value = 3;
 }

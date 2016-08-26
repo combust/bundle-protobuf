@@ -6,7 +6,6 @@ import "ml/bundle/TensorType.proto";
 
 // Taken from TensorFlow
 message Tensor {
-  required TensorType type = 1;
-  repeated double double_val = 2 [packed = true];
-  repeated string string_val = 3;
+  repeated double double_val = 1 [packed = true];
+  repeated string string_val = 2;
 }
