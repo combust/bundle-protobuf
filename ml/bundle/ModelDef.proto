@@ -2,9 +2,9 @@ package ml.bundle;
 
 option java_outer_classname = "ModelDefProto";
 
-import "ml/bundle/Attribute.proto";
+import "ml/bundle/AttributeList.proto";
 
 message ModelDef {
   required string op = 1;
-  repeated Attribute attributes = 3;
+  optional AttributeList attributes = 2;
 }
