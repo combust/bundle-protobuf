@@ -5,8 +5,15 @@ option java_outer_classname = "BundleDefProto";
 import "ml/bundle/AttributeList.proto";
 
 message BundleDef {
+  enum Format {
+    MIXED = 0;
+    JSON = 1;
+    PROTOBUF = 2;
+  }
+
   required string name = 1;
   required string version = 2;
-  optional AttributeList attributes = 3;
-  repeated string nodes = 4;
+  required Format format = 3;
+  optional AttributeList attributes = 4;
+  repeated string nodes = 5;
 }
