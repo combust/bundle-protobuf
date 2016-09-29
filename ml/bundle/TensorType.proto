@@ -1,3 +1,5 @@
+syntax = "proto3";
+
 package ml.bundle;
 
 option java_outer_classname = "TensorTypeProto";
@@ -5,6 +7,6 @@ option java_outer_classname = "TensorTypeProto";
 import "ml/bundle/BasicType.proto";
 
 message TensorType {
-  required BasicType base = 1;
+  BasicType base = 1;
   repeated int32 dimensions = 2;
 }

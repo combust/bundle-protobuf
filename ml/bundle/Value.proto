@@ -1,3 +1,5 @@
+syntax = "proto3";
+
 package ml.bundle;
 
 option java_outer_classname = "ValueProto";

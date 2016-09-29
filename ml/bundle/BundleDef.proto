@@ -1,3 +1,5 @@
+syntax = "proto3";
+
 package ml.bundle;
 
 option java_outer_classname = "BundleDefProto";
@@ -11,9 +13,9 @@ message BundleDef {
     PROTOBUF = 2;
   }
 
-  required string name = 1;
-  required string version = 2;
-  required Format format = 3;
-  optional AttributeList attributes = 4;
+  string name = 1;
+  string version = 2;
+  Format format = 3;
+  AttributeList attributes = 4;
   repeated string nodes = 5;
 }

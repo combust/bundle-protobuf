@@ -1,3 +1,5 @@
+syntax = "proto3";
+
 package ml.bundle;
 
 option java_outer_classname = "ModelDefProto";
@@ -5,6 +7,6 @@ option java_outer_classname = "ModelDefProto";
 import "ml/bundle/AttributeList.proto";
 
 message ModelDef {
-  required string op = 1;
-  optional AttributeList attributes = 2;
+  string op = 1;
+  AttributeList attributes = 2;
 }

@@ -1,3 +1,5 @@
+syntax = "proto3";
+
 package ml.bundle;
 
 option java_outer_classname = "NodeDefProto";
@@ -5,6 +7,6 @@ option java_outer_classname = "NodeDefProto";
 import "ml/bundle/Shape.proto";
 
 message NodeDef {
-  required string name = 1;
-  required Shape shape = 2;
+  string name = 1;
+  Shape shape = 2;
 }

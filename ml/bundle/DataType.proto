@@ -1,3 +1,5 @@
+syntax = "proto3";
+
 package ml.bundle;
 
 option java_outer_classname = "DataTypeProto";
@@ -7,7 +9,7 @@ import "ml/bundle/TensorType.proto";
 
 message DataType {
   message ListType {
-    required DataType base = 1;
+    DataType base = 1;
   }
 
   oneof underlying {
