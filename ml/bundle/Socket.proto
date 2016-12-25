@@ -4,10 +4,7 @@ package ml.bundle;
 
 option java_outer_classname = "SocketProto";
 
-import "ml/bundle/DataType.proto";
-
 message Socket {
   string name = 1;
   string port = 2;
-  DataType dataType = 3;
 }
