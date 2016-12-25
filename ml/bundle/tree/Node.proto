@@ -12,8 +12,7 @@ message Node {
   }
 
   message LeafNode {
-    double prediction = 1;
-    repeated double impurities = 2;
+    repeated double values = 1;
   }
 
   oneof n {
