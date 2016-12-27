@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package ml.bundle.tree;
+package ml.bundle.tree.decision;
 
 option java_outer_classname = "SplitProto";
 

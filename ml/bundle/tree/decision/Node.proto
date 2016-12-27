@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-package ml.bundle.tree;
+package ml.bundle.tree.decision;
 
 option java_outer_classname = "NodeProto";
 
-import "ml/bundle/tree/Split.proto";
+import "ml/bundle/tree/decision/Split.proto";
 
 message Node {
   message InternalNode {

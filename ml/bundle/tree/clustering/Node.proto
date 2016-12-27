@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package ml.bundle.tree.clustering;
+
+option java_outer_classname = "NodeProto";
+
+message Node {
+  uint32 index = 1;
+  double norm = 2;
+  repeated double values = 3;
+  uint32 numChildren = 4;
+}
