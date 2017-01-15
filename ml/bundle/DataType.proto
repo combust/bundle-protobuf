@@ -17,5 +17,6 @@ message DataType {
     ListType list = 2;
     TensorType tensor = 3;
     string custom = 4;
+    bool dt = 5;
   }
 }

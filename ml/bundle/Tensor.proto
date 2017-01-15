@@ -4,10 +4,11 @@ package ml.bundle;
 
 option java_outer_classname = "TensorProto";
 
-import "ml/bundle/TensorType.proto";
+import "ml/bundle/BasicType.proto";
 
-// Taken from TensorFlow
 message Tensor {
-  repeated double double_val = 1 [packed = true];
-  repeated string string_val = 2;
+  BasicType base = 1;
+  repeated int32 dimensions = 2;
+  bytes value = 3;
+  bytes indices = 4;
 }

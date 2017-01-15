@@ -8,7 +8,6 @@ import "ml/bundle/Value.proto";
 import "ml/bundle/DataType.proto";
 
 message Attribute {
-  string name = 1;
-  DataType type = 2;
-  Value value = 3;
+  DataType type = 1;
+  Value value = 2;
 }

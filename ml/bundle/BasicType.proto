@@ -5,8 +5,13 @@ package ml.bundle;
 option java_outer_classname = "BasicTypeProto";
 
 enum BasicType {
-  DOUBLE = 0;
+  BOOLEAN = 0;
   STRING = 1;
-  LONG = 2;
-  BOOLEAN = 3;
+  BYTE = 2;
+  SHORT = 3;
+  INT = 4;
+  LONG = 5;
+  FLOAT = 6;
+  DOUBLE = 7;
 }
+

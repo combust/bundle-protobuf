@@ -8,5 +8,4 @@ import "ml/bundle/BasicType.proto";
 
 message TensorType {
   BasicType base = 1;
-  repeated int32 dimensions = 2;
 }

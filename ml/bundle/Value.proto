@@ -11,10 +11,10 @@ import "ml/bundle/Tensor.proto";
 message Value {
   message ListValue {
     repeated ListValue list = 1;
-    repeated string s = 2;
-    repeated int64 i = 3 [packed = true];
-    repeated double f = 4 [packed = true];
-    repeated bool b = 5 [packed = true];
+    repeated bool b = 2 [packed = true];
+    repeated string s = 3;
+    repeated int64 i = 4 [packed = true];
+    repeated double f = 5 [packed = true];
     repeated DataType type = 6;
     repeated Tensor tensor = 7;
     repeated bytes custom = 8;
@@ -22,10 +22,10 @@ message Value {
 
   oneof v {
     ListValue list = 1;
-    string s = 2;
-    int64 i = 3;
-    double f = 4;
-    bool b = 5;
+    bool b = 2;
+    string s = 3;
+    int64 i = 4;
+    double f = 5;
     DataType type = 6;
     Tensor tensor = 7;
     bytes custom = 8;
