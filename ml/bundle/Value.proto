@@ -18,6 +18,7 @@ message Value {
     repeated DataType type = 6;
     repeated Tensor tensor = 7;
     repeated bytes custom = 8;
+    repeated bytes bs = 9;
   }
 
   oneof v {
@@ -29,5 +30,6 @@ message Value {
     DataType type = 6;
     Tensor tensor = 7;
     bytes custom = 8;
+    bytes bs = 9;
   }
 }

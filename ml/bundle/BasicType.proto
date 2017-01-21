@@ -13,5 +13,7 @@ enum BasicType {
   LONG = 5;
   FLOAT = 6;
   DOUBLE = 7;
+  BYTE_STRING = 8;
+  DATA_TYPE = 9;
 }
 
