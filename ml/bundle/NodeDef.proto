@@ -4,9 +4,9 @@ package ml.bundle;
 
 option java_outer_classname = "NodeDefProto";
 
-import "ml/bundle/Shape.proto";
+import "ml/bundle/NodeShape.proto";
 
 message NodeDef {
   string name = 1;
-  Shape shape = 2;
+  NodeShape shape = 2;
 }

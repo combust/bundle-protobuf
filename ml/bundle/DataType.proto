@@ -5,17 +5,9 @@ package ml.bundle;
 option java_outer_classname = "DataTypeProto";
 
 import "ml/bundle/BasicType.proto";
-import "ml/bundle/TensorType.proto";
+import "ml/bundle/DataShape.proto";
 
 message DataType {
-  message ListType {
-    DataType base = 1;
-  }
-
-  oneof underlying {
-    BasicType basic = 1;
-    ListType list = 2;
-    TensorType tensor = 3;
-    string custom = 4;
-  }
+  DataShape shape = 1;
+  BasicType base = 2;
 }

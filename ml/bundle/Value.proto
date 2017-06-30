@@ -17,8 +17,7 @@ message Value {
     repeated double f = 5 [packed = true];
     repeated DataType type = 6;
     repeated Tensor tensor = 7;
-    repeated bytes custom = 8;
-    repeated bytes bs = 9;
+    repeated bytes bs = 8;
   }
 
   oneof v {
@@ -29,7 +28,6 @@ message Value {
     double f = 5;
     DataType type = 6;
     Tensor tensor = 7;
-    bytes custom = 8;
-    bytes bs = 9;
+    bytes bs = 8;
   }
 }
