@@ -5,6 +5,8 @@ package ml.bundle;
 option java_outer_classname = "ValueProto";
 
 import "ml/bundle/DataType.proto";
+import "ml/bundle/BasicType.proto";
+import "ml/bundle/DataShape.proto";
 import "ml/bundle/Tensor.proto";
 
 // Taken from TensorFlow
@@ -18,6 +20,8 @@ message Value {
     repeated DataType type = 6;
     repeated Tensor tensor = 7;
     repeated bytes bs = 8;
+    repeated DataShape ds = 9;
+    repeated BasicType bt = 10;
   }
 
   oneof v {
@@ -29,5 +33,7 @@ message Value {
     DataType type = 6;
     Tensor tensor = 7;
     bytes bs = 8;
+    DataShape ds = 9;
+    BasicType bt = 10;
   }
 }
