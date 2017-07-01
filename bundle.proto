@@ -1,0 +1,134 @@
+syntax = "proto3";
+
+package ml;
+
+/**************************************************
+
+             Data Type
+
+Enum of all of the different scalar values allowed
+in data frames. Values can be scalars, lists, or
+tensors.
+
+**************************************************/
+enum BasicType {
+  /* Fixed-width types */
+  BOOLEAN = 0;
+  BYTE = 1;
+  SHORT = 2;
+  INT = 3;
+  LONG = 4;
+  FLOAT = 5;
+  DOUBLE = 6;
+
+  /* Variable-width types */
+  STRING = 100;
+  BYTE_STRING = 101;
+}
+
+message TensorDimension {
+  // Size of this dimension
+  int32 size = 1;
+
+  // Placeholder, currently unused
+  string name = 2;
+}
+
+message TensorShape {
+  repeated TensorDimension dimensions = 1;
+}
+
+message Tensor {
+  BasicType base = 1;
+  TensorShape shape = 2;
+  bytes value = 3;
+}
+
+enum DataShapeType {
+  SCALAR = 0;
+  LIST = 1;
+  TENSOR = 2;
+}
+
+message DataShape {
+  DataShapeType base = 1;
+  bool is_nullable = 2;
+  TensorShape tensor_shape = 3;
+}
+
+message List {
+  repeated bool b = 1 [packed = true];
+  repeated string s = 2;
+  repeated int32 i = 3 [packed = true];
+  repeated int64 l = 4 [packed = true];
+  repeated float f = 5 [packed = true];
+  repeated double d = 6 [packed = true];
+  repeated bytes bs = 7;
+  repeated Tensor t = 8;
+  repeated BasicType bt = 9;
+  repeated DataShape ds = 10;
+  repeated Model m = 11;
+}
+
+message Scalar {
+  bool b = 1;
+  string s = 2;
+  int32 i = 3;
+  int64 l = 4;
+  float f = 5;
+  double d = 6;
+  bytes bs = 7;
+  Tensor t = 8;
+  BasicType bt = 9;
+  DataShape ds = 10;
+  Model m = 11;
+}
+
+message Value {
+  oneof v {
+    Scalar s = 1;
+    List l = 2;
+    Tensor t = 3;
+  }
+}
+
+message Attributes {
+  map<string, Value> list = 1;
+}
+
+/*******************************************/
+/*            Bundle Objects               */
+/*******************************************/
+enum Format {
+  JSON = 0;
+  PROTOBUF = 1;
+}
+
+message Bundle {
+  string uid = 1;
+  string name = 2;
+  Format format = 3;
+  string version = 4;
+  string timestamp = 5;
+}
+
+message Model {
+  string op = 1;
+  Attributes attributes = 2;
+}
+
+message Socket {
+  string name = 1;
+  string port = 2;
+}
+
+message NodeShape {
+  repeated Socket inputs = 1;
+  repeated Socket outputs = 2;
+}
+
+message Node {
+  string name = 1;
+  NodeShape shape = 2;
+}
+
