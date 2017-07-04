@@ -56,6 +56,16 @@ message DataShape {
   TensorShape tensor_shape = 3;
 }
 
+message DataType {
+  BasicType base = 1;
+  DataShape shape = 2;
+}
+
+message Field {
+  string name = 1;
+  DataType data_type = 2;
+}
+
 message List {
   repeated bool b = 1 [packed = true];
   repeated string s = 2;
@@ -118,8 +128,8 @@ message Model {
 }
 
 message Socket {
-  string name = 1;
-  string port = 2;
+  string port = 1;
+  Field field = 2;
 }
 
 message NodeShape {
