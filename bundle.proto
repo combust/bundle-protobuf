@@ -129,7 +129,8 @@ message Model {
 
 message Socket {
   string port = 1;
-  Field field = 2;
+  string name = 2;
+  DataType data_type = 3;
 }
 
 message NodeShape {
