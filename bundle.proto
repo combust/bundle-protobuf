@@ -12,14 +12,17 @@ tensors.
 
 **************************************************/
 enum BasicType {
+  /* Default, unknown type */
+  UNDEFINED = 0;
+
   /* Fixed-width types */
-  BOOLEAN = 0;
-  BYTE = 1;
-  SHORT = 2;
-  INT = 3;
-  LONG = 4;
-  FLOAT = 5;
-  DOUBLE = 6;
+  BOOLEAN = 1;
+  BYTE = 2;
+  SHORT = 3;
+  INT = 4;
+  LONG = 5;
+  FLOAT = 6;
+  DOUBLE = 7;
 
   /* Variable-width types */
   STRING = 100;
