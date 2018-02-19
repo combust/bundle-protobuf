@@ -123,6 +123,7 @@ message Bundle {
   Format format = 3;
   string version = 4;
   string timestamp = 5;
+  Attributes meta = 6;
 }
 
 message Model {
