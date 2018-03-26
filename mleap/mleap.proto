@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package ml.combust.mleap.pb;
+
+import "bundle.proto";
+
+enum SelectMode {
+  SELECT_MODE_UNKNOWN = 0;
+  SELECT_MODE_STRICT = 1;
+  SELECT_MODE_RELAXED = 2;
+}
+
+message TransformOptions {
+  repeated string select = 1;
+  SelectMode select_mode = 2;
+}
+
+enum TransformStatus {
+  // Transform was successful
+  STATUS_OK = 0;
+
+  // There was an error during the transform
+  STATUS_ERROR = 1;
+
+  // The stream was interrupted due to a reload,
+  // reconnect with the same options to resume
+  // transforming with the newly loaded model
+  STATUS_RECONNECT = 2;
+}
+
+message TransformFrameRequest {
+  string uri = 1;
+  string format = 2;
+  bytes frame = 3;
+  TransformOptions options = 4;
+}
+
+message TransformFrameResult {
+  bytes frame = 1;
+  TransformStatus status = 2;
+  string error = 3;
+}
+
+message TransformRowRequest {
+  string uri = 1;
+  string format = 2;
+  ml.bundle.Schema schema = 3;
+  TransformOptions options = 4;
+  bytes row = 5;
+}
+
+message TransformRowResult {
+  bytes row = 1;
+  TransformStatus status = 2;
+  string error = 3;
+}
+
+service Mleap {
+  rpc TransformFrame (TransformFrameRequest) returns (TransformFrameResult) { }
+  rpc TransformRowStream (stream TransformRowRequest) returns (stream TransformRowResult) { }
+}
+
