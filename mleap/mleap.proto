@@ -26,6 +26,7 @@ enum TransformStatus {
 message BundleMeta {
   ml.bundle.Bundle bundle = 1;
   ml.bundle.Schema input_schema = 2;
+  ml.bundle.Schema output_schema = 3;
 }
 
 message GetBundleMetaRequest {
