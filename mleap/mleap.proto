@@ -34,17 +34,29 @@ message GetBundleMetaRequest {
 }
 
 message TransformFrameRequest {
+  // Fields that are sent once on stream open
+  //   (or everytime for one-off requests).
   string uri = 1;
   string format = 2;
-  bytes frame = 3;
-  TransformOptions options = 4;
-  uint32 timeout = 5;
+
+  // Fields that are sent after initialzing stream
+  //  (or everytime for one-off requests)
+
+  // key for associating requests with results
+  // results can come out of order, so this is
+  // needed to reconstruct ordering if necessary
+  bytes tag = 3;
+  bytes frame = 4; // leap frame in the specified format
+  TransformOptions options = 5; // options for this transform
+  uint32 timeout = 6; // how long to wait for the transform to complete in ms
 }
 
-message TransformFrameResult {
-  bytes frame = 1;
-  TransformStatus status = 2;
-  string error = 3;
+message TransformFrameResponse {
+  bytes tag = 1; // tag sent in with request
+  bytes frame = 2; // leap frame in the request format
+  TransformStatus status = 3; // status of the transform (success/failure)
+  string error = 4; // an error message for debugging
+  string backtrace = 5; // a backtrace for debugging
 }
 
 message TransformRowRequest {
@@ -58,19 +70,23 @@ message TransformRowRequest {
   uint32 parallelism = 5;
 
   // Fields that are sent after initializing stream
-  uint32 timeout = 6; // timeout in milliseconds to get a result
-  bytes row = 7; // data to transform
+
+  bytes tag = 6; // tag to associate with result
+  uint32 timeout = 7; // timeout in milliseconds to get a result
+  bytes row = 8; // data to transform
 }
 
-message TransformRowResult {
-  bytes row = 1;
-  TransformStatus status = 2;
-  string error = 3;
+message TransformRowResponse {
+  bytes tag = 1; // tag sent in with request
+  bytes row = 2; // row data in the stream format
+  TransformStatus status = 3; // status of this transform request (success/failure)
+  string error = 4; // error message for debugging
+  string backtrace = 5; // error backtrace for debugging
 }
 
 service Mleap {
   rpc GetBundleMeta (GetBundleMetaRequest) returns (BundleMeta) { }
-  rpc TransformFrame (TransformFrameRequest) returns (TransformFrameResult) { }
-  rpc TransformRowStream (stream TransformRowRequest) returns (stream TransformRowResult) { }
+  rpc TransformFrame (TransformFrameRequest) returns (TransformFrameResponse) { }
+  rpc TransformRowStream (stream TransformRowRequest) returns (stream TransformRowResponse) { }
 }
 
