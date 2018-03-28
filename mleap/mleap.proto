@@ -38,6 +38,7 @@ message TransformFrameRequest {
   //   (or everytime for one-off requests).
   string uri = 1;
   string format = 2;
+  uint64 timeout = 3; // how long to wait for the transform to complete in ms
 
   // Fields that are sent after initialzing stream
   //  (or everytime for one-off requests)
@@ -45,10 +46,9 @@ message TransformFrameRequest {
   // key for associating requests with results
   // results can come out of order, so this is
   // needed to reconstruct ordering if necessary
-  bytes tag = 3;
-  bytes frame = 4; // leap frame in the specified format
-  TransformOptions options = 5; // options for this transform
-  uint32 timeout = 6; // how long to wait for the transform to complete in ms
+  bytes tag = 4;
+  bytes frame = 5; // leap frame in the specified format
+  TransformOptions options = 6; // options for this transform
 }
 
 message TransformFrameResponse {
@@ -68,11 +68,11 @@ message TransformRowRequest {
   ml.bundle.Schema schema = 3;
   TransformOptions options = 4;
   uint32 parallelism = 5;
+  uint64 timeout = 6; // timeout in milliseconds to get a result
 
   // Fields that are sent after initializing stream
 
-  bytes tag = 6; // tag to associate with result
-  uint32 timeout = 7; // timeout in milliseconds to get a result
+  bytes tag = 7; // tag to associate with result
   bytes row = 8; // data to transform
 }
 
