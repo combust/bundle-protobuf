@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package ml.combust.mleap.pb;
+
+import "mleap.proto";
+
+service Mleap {
+    rpc GetBundleMeta (ml.combust.mleap.pb.GetBundleMetaRequest) returns (ml.combust.mleap.pb.BundleMeta) { }
+    rpc TransformFrame (ml.combust.mleap.pb.TransformFrameRequest) returns (ml.combust.mleap.pb.TransformFrameResponse) { }
+    rpc TransformFrameStream (stream ml.combust.mleap.pb.TransformFrameRequest) returns (stream ml.combust.mleap.pb.TransformFrameResponse) { }
+    rpc TransformRowStream (stream ml.combust.mleap.pb.TransformRowRequest) returns (stream ml.combust.mleap.pb.TransformRowResponse) { }
+}

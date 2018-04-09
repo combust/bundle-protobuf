@@ -84,10 +84,3 @@ message TransformRowResponse {
   string backtrace = 5; // error backtrace for debugging
 }
 
-service Mleap {
-  rpc GetBundleMeta (GetBundleMetaRequest) returns (BundleMeta) { }
-  rpc TransformFrame (TransformFrameRequest) returns (TransformFrameResponse) { }
-  rpc TransformFrameStream (stream TransformFrameRequest) returns (stream TransformFrameResponse) { }
-  rpc TransformRowStream (stream TransformRowRequest) returns (stream TransformRowResponse) { }
-}
-
