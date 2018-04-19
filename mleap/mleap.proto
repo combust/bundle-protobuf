@@ -15,11 +15,11 @@ message TransformOptions {
   SelectMode select_mode = 2;
 }
 
-enum Status {
-  // request was successful
+enum TransformStatus {
+  // Transform was successful
   STATUS_OK = 0;
 
-  // There was an error handling the request
+  // There was an error during the transform
   STATUS_ERROR = 1;
 }
 
@@ -31,13 +31,6 @@ message BundleMeta {
 
 message GetBundleMetaRequest {
   string uri = 1;
-}
-
-message GetBundleMetaResponse {
-  BundleMeta bundleMeta = 1;
-  Status status = 3; // status (success/failure)
-  string error = 4; // an error message for debugging
-  string backtrace = 5; // a backtrace for debugging
 }
 
 message TransformFrameRequest {
@@ -61,7 +54,7 @@ message TransformFrameRequest {
 message TransformFrameResponse {
   bytes tag = 1; // tag sent in with request
   bytes frame = 2; // leap frame in the request format
-  Status status = 3; // status of the transform (success/failure)
+  TransformStatus status = 3; // status of the transform (success/failure)
   string error = 4; // an error message for debugging
   string backtrace = 5; // a backtrace for debugging
 }
@@ -86,7 +79,7 @@ message TransformRowRequest {
 message TransformRowResponse {
   bytes tag = 1; // tag sent in with request
   bytes row = 2; // row data in the stream format
-  Status status = 3; // status of this transform request (success/failure)
+  TransformStatus status = 3; // status of this transform request (success/failure)
   string error = 4; // error message for debugging
   string backtrace = 5; // error backtrace for debugging
 }
