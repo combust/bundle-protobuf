@@ -77,10 +77,17 @@ message TransformRowRequest {
 }
 
 message TransformRowResponse {
-  bytes tag = 1; // tag sent in with request
-  bytes row = 2; // row data in the stream format
-  TransformStatus status = 3; // status of this transform request (success/failure)
-  string error = 4; // error message for debugging
-  string backtrace = 5; // error backtrace for debugging
+  // Fields that are sent once on stream open
+  //   these configure subsequent calls to the
+  //   stream, and are ignored after the first call
+  ml.bundle.Schema schema = 1; // Schema of output rows
+
+  // Fields that are sent after initializing stream
+
+  bytes tag = 2; // tag sent in with request
+  bytes row = 3; // row data in the stream format
+  TransformStatus status = 4; // status of this transform request (success/failure)
+  string error = 5; // error message for debugging
+  string backtrace = 6; // error backtrace for debugging
 }
 
