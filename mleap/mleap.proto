@@ -38,7 +38,7 @@ message TransformFrameRequest {
   //   (or everytime for one-off requests).
   string uri = 1;
   string format = 2;
-  uint64 timeout = 3; // how long to wait for the transform to complete in ms
+  uint64 timeout = 3; // For streaming transformers, how long to wait for stream to startup
   uint32 parallelism = 4; // For streaming transforms, how much parallelism
 
   // Fields that are sent after initialzing stream
@@ -69,7 +69,7 @@ message TransformRowRequest {
   ml.bundle.Schema schema = 3;
   TransformOptions options = 4;
   uint32 parallelism = 5;
-  uint64 timeout = 6; // timeout in milliseconds to get a result
+  uint64 timeout = 6; // How long to wait for stream to startup
 
   // Fields that are sent after initializing stream
 
