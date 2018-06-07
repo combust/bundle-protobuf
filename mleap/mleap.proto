@@ -39,6 +39,7 @@ message TransformFrameRequest {
   string uri = 1;
   string format = 2;
   uint64 timeout = 3; // how long to wait for the transform to complete in ms
+  uint32 parallelism = 4; // For streaming transforms, how much parallelism
 
   // Fields that are sent after initialzing stream
   //  (or everytime for one-off requests)
@@ -46,9 +47,9 @@ message TransformFrameRequest {
   // key for associating requests with results
   // results can come out of order, so this is
   // needed to reconstruct ordering if necessary
-  bytes tag = 4;
-  bytes frame = 5; // leap frame in the specified format
-  TransformOptions options = 6; // options for this transform
+  bytes tag = 10;
+  bytes frame = 11; // leap frame in the specified format
+  TransformOptions options = 12; // options for this transform
 }
 
 message TransformFrameResponse {
@@ -72,8 +73,8 @@ message TransformRowRequest {
 
   // Fields that are sent after initializing stream
 
-  bytes tag = 7; // tag to associate with result
-  bytes row = 8; // data to transform
+  bytes tag = 10; // tag to associate with result
+  bytes row = 11; // data to transform
 }
 
 message TransformRowResponse {
@@ -84,10 +85,10 @@ message TransformRowResponse {
 
   // Fields that are sent after initializing stream
 
-  bytes tag = 2; // tag sent in with request
-  bytes row = 3; // row data in the stream format
-  TransformStatus status = 4; // status of this transform request (success/failure)
-  string error = 5; // error message for debugging
-  string backtrace = 6; // error backtrace for debugging
+  bytes tag = 10; // tag sent in with request
+  bytes row = 11; // row data in the stream format
+  TransformStatus status = 12; // status of this transform request (success/failure)
+  string error = 13; // error message for debugging
+  string backtrace = 14; // error backtrace for debugging
 }
 
