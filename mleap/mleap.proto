@@ -31,7 +31,7 @@ message BundleMeta {
 
 message StreamConfig {
   uint64 init_timeout = 1;
-  uint64 inactivity_timeout = 2;
+  uint64 idle_timeout = 2;
   uint64 transform_timeout = 3;
   uint32 parallelism = 4;
   uint32 buffer_size = 5;
