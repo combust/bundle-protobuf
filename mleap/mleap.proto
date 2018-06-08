@@ -29,8 +29,31 @@ message BundleMeta {
   ml.bundle.Schema output_schema = 3;
 }
 
+message StreamConfig {
+  uint64 init_timeout = 1;
+  uint64 inactivity_timeout = 2;
+  uint64 transform_timeout = 3;
+  uint32 parallelism = 4;
+  uint32 buffer_size = 5;
+}
+
 message GetBundleMetaRequest {
   string uri = 1;
+}
+
+message ModelConfig {
+  // URI of configured model
+  string uri = 1;
+
+  // How long to wait after all connections close
+  //  and no more transform request before unloading
+  //  model from memory
+  uint64 memory_timeout = 2;
+
+  // How long to wait from when model is first loaded
+  //  from disk to memory before invalidating any
+  //  cached files
+  uint64 disk_timeout = 3;
 }
 
 message TransformFrameRequest {
@@ -38,8 +61,9 @@ message TransformFrameRequest {
   //   (or everytime for one-off requests).
   string uri = 1;
   string format = 2;
-  uint64 timeout = 3; // For streaming transformers, how long to wait for stream to startup
-  uint32 parallelism = 4; // For streaming transforms, how much parallelism
+
+  // Stream Only Fields
+  StreamConfig stream_config = 3;
 
   // Fields that are sent after initialzing stream
   //  (or everytime for one-off requests)
@@ -68,8 +92,7 @@ message TransformRowRequest {
   string format = 2;
   ml.bundle.Schema schema = 3;
   TransformOptions options = 4;
-  uint32 parallelism = 5;
-  uint64 timeout = 6; // How long to wait for stream to startup
+  StreamConfig stream_config = 5;
 
   // Fields that are sent after initializing stream
 
