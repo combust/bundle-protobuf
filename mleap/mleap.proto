@@ -29,41 +29,103 @@ message BundleMeta {
   ml.bundle.Schema output_schema = 3;
 }
 
+message Model {
+  string name = 1;
+  string uri = 2;
+  ModelConfig config = 3;
+}
+
+message FrameStream {
+  string stream_name = 1;
+  string model_name = 2;
+  StreamConfig stream_config = 3;
+}
+
+message RowStream {
+  string stream_name = 1;
+  string model_name = 2;
+  StreamConfig stream_config = 3;
+  RowStreamSpec spec = 4;
+  ml.bundle.Schema output_schema = 5;
+}
+
+enum ThrottleMode {
+  THROTTLE_SHAPING = 0;
+  THROTTLE_ENFORCING = 1;
+}
+
+message Throttle {
+  uint32 elements = 1;
+  uint64 duration = 2;
+  uint32 maximum_burst = 3;
+  ThrottleMode mode = 4;
+}
+
 message StreamConfig {
-  uint64 init_timeout = 1;
-  uint64 idle_timeout = 2;
-  uint64 transform_timeout = 3;
-  uint32 parallelism = 4;
+  // Idle timeout for transform requests
+  uint64 idle_timeout = 1;
+
+  // Delay to add to the transform
+  uint64 transform_delay = 2;
+
+  // Parallelism of the stream
+  uint32 parallelism = 3;
+
+  // Rate limit for the stream
+  Throttle throttle = 4;
+
+  // Buffer size of element queue
   uint32 buffer_size = 5;
 }
 
+message FlowConfig {
+  // Idle timeout for transform requests
+  uint64 idle_timeout = 1;
+
+  // Delay to add to the transform
+  uint64 transform_delay = 2;
+
+  // Parallelism of the flow
+  uint32 parallelism = 3;
+
+  // Rate limit for the flow
+  // Underlying rate limit of the stream
+  // will apply as well
+  Throttle throttle = 4;
+}
+
+message RowStreamSpec {
+  string format = 1;
+  ml.bundle.Schema schema = 2;
+  TransformOptions options = 3;
+}
+
 message GetBundleMetaRequest {
-  string uri = 1;
+  string model_name = 1;
 }
 
 message ModelConfig {
-  // URI of configured model
-  string uri = 1;
-
   // How long to wait after all connections close
   //  and no more transform request before unloading
   //  model from memory
-  uint64 memory_timeout = 2;
+  uint64 memory_timeout = 1;
 
   // How long to wait from when model is first loaded
   //  from disk to memory before invalidating any
   //  cached files
-  uint64 disk_timeout = 3;
+  uint64 disk_timeout = 2;
 }
 
 message TransformFrameRequest {
-  // Fields that are sent once on stream open
-  //   (or everytime for one-off requests).
-  string uri = 1;
-  string format = 2;
+  // Name of model
+  string model_name = 1;
+  // Name of the stream
+  // Empty if one-off request
+  string stream_name = 2;
+  FlowConfig flow_config = 3;
 
-  // Stream Only Fields
-  StreamConfig stream_config = 3;
+  string format = 4;
+  uint64 init_timeout = 5;
 
   // Fields that are sent after initialzing stream
   //  (or everytime for one-off requests)
@@ -71,32 +133,34 @@ message TransformFrameRequest {
   // key for associating requests with results
   // results can come out of order, so this is
   // needed to reconstruct ordering if necessary
-  bytes tag = 10;
+  //
+  // NOTE: this field is not required for one-off transforms
+  uint64 tag = 10;
   bytes frame = 11; // leap frame in the specified format
   TransformOptions options = 12; // options for this transform
 }
 
 message TransformFrameResponse {
-  bytes tag = 1; // tag sent in with request
-  bytes frame = 2; // leap frame in the request format
-  TransformStatus status = 3; // status of the transform (success/failure)
-  string error = 4; // an error message for debugging
-  string backtrace = 5; // a backtrace for debugging
+  uint64 tag = 1; // tag sent in with request
+  string format = 2;
+  bytes frame = 3; // leap frame in the request format
+  TransformStatus status = 4; // status of the transform (success/failure)
+  string error = 5; // an error message for debugging
+  string backtrace = 6; // a backtrace for debugging
 }
 
 message TransformRowRequest {
-  // Fields that are sent once on stream open
-  //   these configure subsequent calls to the
-  //   stream, and are ignored after the first call
-  string uri = 1;
-  string format = 2;
-  ml.bundle.Schema schema = 3;
-  TransformOptions options = 4;
-  StreamConfig stream_config = 5;
+  // name of the model
+  string model_name = 1;
+  // name of the stream
+  string stream_name = 2;
+  FlowConfig flow_config = 3;
+  string format = 4;
+  uint64 init_timeout = 5;
+  ml.bundle.Schema input_schema = 6;
+  ml.bundle.Schema output_schema = 7;
 
-  // Fields that are sent after initializing stream
-
-  bytes tag = 10; // tag to associate with result
+  uint64 tag = 10; // tag to associate with result
   bytes row = 11; // data to transform
 }
 
@@ -108,10 +172,48 @@ message TransformRowResponse {
 
   // Fields that are sent after initializing stream
 
-  bytes tag = 10; // tag sent in with request
+  uint64 tag = 10; // tag sent in with request
   bytes row = 11; // row data in the stream format
   TransformStatus status = 12; // status of this transform request (success/failure)
   string error = 13; // error message for debugging
   string backtrace = 14; // error backtrace for debugging
+}
+
+message LoadModelRequest {
+  string model_name = 1;
+  string uri = 2;
+  ModelConfig config = 3;
+  bool force = 4;
+}
+
+message GetModelRequest {
+  string model_name = 1;
+}
+
+message UnloadModelRequest {
+  string model_name = 1;
+}
+
+message CreateRowStreamRequest {
+  string model_name = 1;
+  string stream_name = 2;
+  StreamConfig stream_config = 3;
+  RowStreamSpec spec = 4;
+}
+
+message GetFrameStreamRequest {
+  string model_name = 1;
+  string stream_name = 2;
+}
+
+message CreateFrameStreamRequest {
+  string model_name = 1;
+  string stream_name = 2;
+  StreamConfig stream_config = 3;
+}
+
+message GetRowStreamRequest {
+  string model_name = 1;
+  string stream_name = 2;
 }
 
