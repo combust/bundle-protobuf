@@ -149,6 +149,13 @@ message TransformFrameResponse {
   string backtrace = 6; // a backtrace for debugging
 }
 
+// used in debugging LeapFrameScoringController endpoints
+message ErrorTransformResponse {
+  TransformStatus status = 1; // status of the transform (success/failure)
+  string error = 2; // an error message for debugging
+  string backtrace = 3; // a backtrace for debugging
+}
+
 message TransformRowRequest {
   // name of the model
   string model_name = 1;
