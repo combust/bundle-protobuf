@@ -64,30 +64,30 @@ message Throttle {
 
 message StreamConfig {
   // Idle timeout for transform requests
-  uint64 idle_timeout = 1;
+  google.protobuf.UInt64Value idle_timeout = 1;
 
   // Delay to add to the transform
-  uint64 transform_delay = 2;
+  google.protobuf.UInt64Value transform_delay = 2;
 
   // Parallelism of the stream
-  uint32 parallelism = 3;
+  google.protobuf.UInt32Value parallelism = 3;
 
   // Rate limit for the stream
   Throttle throttle = 4;
 
   // Buffer size of element queue
-  uint32 buffer_size = 5;
+  google.protobuf.UInt32Value buffer_size = 5;
 }
 
 message FlowConfig {
   // Idle timeout for transform requests
-  uint64 idle_timeout = 1;
+  google.protobuf.UInt64Value idle_timeout = 1;
 
   // Delay to add to the transform
-  uint64 transform_delay = 2;
+  google.protobuf.UInt64Value transform_delay = 2;
 
   // Parallelism of the flow
-  uint32 parallelism = 3;
+  google.protobuf.UInt32Value parallelism = 3;
 
   // Rate limit for the flow
   // Underlying rate limit of the stream
