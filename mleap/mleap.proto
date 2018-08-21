@@ -3,6 +3,7 @@ syntax = "proto3";
 package ml.combust.mleap.pb;
 
 import "bundle.proto";
+import "google/protobuf/wrappers.proto";
 
 enum SelectMode {
   SELECT_MODE_UNKNOWN = 0;
@@ -108,12 +109,12 @@ message ModelConfig {
   // How long to wait after all connections close
   //  and no more transform request before unloading
   //  model from memory
-  uint64 memory_timeout = 1;
+  google.protobuf.UInt64Value memory_timeout = 1;
 
   // How long to wait from when model is first loaded
   //  from disk to memory before invalidating any
   //  cached files
-  uint64 disk_timeout = 2;
+  google.protobuf.UInt64Value disk_timeout = 2;
 }
 
 message TransformFrameRequest {
@@ -125,7 +126,7 @@ message TransformFrameRequest {
   FlowConfig flow_config = 3;
 
   string format = 4;
-  uint64 init_timeout = 5;
+  google.protobuf.UInt64Value init_timeout = 5;
 
   // Fields that are sent after initialzing stream
   //  (or everytime for one-off requests)
@@ -163,7 +164,7 @@ message TransformRowRequest {
   string stream_name = 2;
   FlowConfig flow_config = 3;
   string format = 4;
-  uint64 init_timeout = 5;
+  google.protobuf.UInt64Value init_timeout = 5;
   ml.bundle.Schema input_schema = 6;
   ml.bundle.Schema output_schema = 7;
 
