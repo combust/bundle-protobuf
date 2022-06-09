@@ -1,6 +1,12 @@
 syntax = "proto3";
 
+import "scalapb/scalapb.proto";
+
 package ml.bundle.dtree;
+
+option (scalapb.options) = {
+  preserve_unknown_fields: false
+};
 
 message Split {
   message CategoricalSplit {
