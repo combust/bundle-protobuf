@@ -1,6 +1,12 @@
 syntax = "proto3";
 
+import "scalapb/scalapb.proto";
+
 package ml.bundle.ctree;
+
+option (scalapb.options) = {
+  preserve_unknown_fields: false
+};
 
 message Node {
   uint32 index = 1;

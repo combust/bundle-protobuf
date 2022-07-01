@@ -1,6 +1,12 @@
 syntax = "proto3";
 
+import "scalapb/scalapb.proto";
+
 package ml.combust.mleap.pb;
+
+option (scalapb.options) = {
+  preserve_unknown_fields: false
+};
 
 import "mleap.proto";
 
